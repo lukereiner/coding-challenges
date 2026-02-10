@@ -55,3 +55,5 @@ function skiJumpMedal(distancePoints, stylePoints, windComp, kPointBonus) {
 //skiJumpMedal(118.0, 50.5, -1.5, 4.0) // returns "No Medal"
 //skiJumpMedal(124.0, 50.5, 2.0, 5.0) // returns "Gold"
 skiJumpMedal(119.0, 49.5, 0.0, 3.0) // returns "No Medal"
+
+// Link to challenge: https://www.freecodecamp.org/learn/daily-coding-challenge/2026-02-09
