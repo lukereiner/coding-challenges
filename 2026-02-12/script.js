@@ -1,38 +1,17 @@
-const skater1 = [26.11, 25.80, 25.92, 26.23, 26.07];
-const skater2 = [25.93, 25.74, 26.53, 26.11, 26.30];
-
-const skater1Rank = {};
-const skater2Rank = {};
-
-function calculateDifferences(skaterArray) {
-    const diff = {};
-    skaterArray.forEach((time, index) => {
-        if (index >= skaterArray.length - 1) {
-            return;
-        }
-        const timeDiff = Math.abs(skaterArray[index + 1] - time);
-        diff[(index + 1)] = Number(timeDiff.toFixed(2));
+function largestDifference(timeArr1, timeArr2) {
+    const timeDiff = []
+    timeArr1.forEach((time1, index) => {
+        const time2 = timeArr2[index];
+        timeDiff.push(Number(Math.abs(time1 - time2).toFixed(2)))
     })
-    console.log(diff);
-    return diff;
+    //console.log('log: ',timeDiff);
+
+    const maxDiff = Math.max(...timeDiff)
+    const findLap = (timeDiff.findIndex((time) => {
+        return time === maxDiff;
+    }) + 1)
+    console.log(findLap)
+    return findLap;
 }
 
-function largestDifference(skater1, skater2) {
-    skater1Diff = calculateDifferences(skater1);
-    skater2Diff = calculateDifferences(skater2);
-
-    const allDiffs = [...Object.values(skater1Diff), ...Object.values(skater2Diff)]
-    const allEntries = [Object.entries(skater1Diff), Object.entries(skater2Diff)]
-    const largest = Math.max(...allDiffs)
-
-    const largestLap = (object, value) => {
-        return Object.keys(object).find(key => object[key] === value)
-    }
-
-    console.log('object entries', allEntries)
-
-    console.log(allDiffs)
-  return largest;
-}
-
-largestDifference(skater1, skater2)
+largestDifference([27.04, 25.94, 26.22, 26.07, 26.18], [25.59, 25.80, 26.11, 26.01, 26.23])
